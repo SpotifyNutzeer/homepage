@@ -1,0 +1,119 @@
+---
+import type { Project } from '../data/projects';
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  project: Project;
+  preview?: ImageMetadata;
+}
+
+const { project, preview } = Astro.props;
+const isLive = !!project.liveUrl;
+---
+<a class={`pcard glass ${project.featured ? 'featured' : ''}`} href={project.liveUrl ?? project.repoUrl}>
+  {preview && (
+    <div class="visual">
+      <Image
+        src={preview}
+        alt={`Vorschau von ${project.name}`}
+        widths={[640, 960, 1280]}
+        sizes="(min-width: 1024px) 1024px, 100vw"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  )}
+  <div class="head">
+    <h3>{project.name}</h3>
+    {isLive && (
+      <span class="live">LIVE · {project.liveUrl?.replace(/^https?:\/\//, '')}</span>
+    )}
+  </div>
+  <p class="desc">{project.description}</p>
+  <ul class="stack">
+    {project.stack.map((s) => <li>{s}</li>)}
+  </ul>
+  <div class="links">
+    <span class="repo">{project.repoUrl.replace('https://', '')}</span>
+  </div>
+</a>
+
+<style>
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .pcard:hover { transform: translateY(-3px); }
+
+  .pcard.featured { padding: 2rem; gap: 1.1rem; }
+
+  .visual {
+    border-radius: var(--r-md);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #2a1830, #1a0e22);
+    border: 1px solid var(--glass-border);
+  }
+  .visual :global(img) {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .head h3 {
+    font-size: 1.4rem;
+  }
+  .pcard.featured .head h3 { font-size: 2rem; }
+
+  .live {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--r-pill);
+    background: rgba(94, 234, 212, 0.18);
+    color: #5eead4;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .stack {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+  }
+  .stack li {
+    font-size: 0.72rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .links {
+    margin-top: 0.25rem;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+  }
+</style>
