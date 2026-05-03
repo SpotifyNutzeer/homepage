@@ -1,0 +1,41 @@
+---
+---
+<section id="about" class="about">
+  <h2 class="section-title">Über mich</h2>
+  <article class="glass body">
+    <p>
+      Software-Engineer mit Schwerpunkt auf Backend und Infrastruktur. Tagsüber Code, abends gerne mehr Code — meistens an Tools, die ich selbst täglich benutzen will.
+    </p>
+    <p>
+      Mich reizt am meisten, wenn Technik aufhört, magisch zu sein: ein eigener Music-Link-Converter statt Odesli, ein eigener Mail-Server statt Gmail, eigener Kubernetes-Cluster statt Vendor-PaaS. Nicht aus Ideologie, sondern weil ich verstehen will, was ich täglich nutze — und weil ich keinen Bock habe, dass mein Alltag aus Black Boxes besteht, die jemand anderes hostet.
+    </p>
+    <p>
+      Music-Tooling ist die andere Konstante. Streaming ist bequem, aber der Werkzeugkasten drumrum (Cross-Service-Links, Wiedergabesteuerung, Plugins) wird kaum gebaut, also baue ich ihn selbst.
+    </p>
+  </article>
+</section>
+
+<style>
+  .about {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: 1.5rem;
+  }
+  .body {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .body p {
+    color: var(--text);
+    font-size: 1.02rem;
+    line-height: 1.65;
+    margin: 0 0 1rem;
+  }
+  .body p:last-child { margin-bottom: 0; }
+  .body p:not(:first-child) {
+    color: var(--text-muted);
+  }
+</style>
