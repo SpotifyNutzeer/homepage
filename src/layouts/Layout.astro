@@ -14,6 +14,8 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageURL = new URL(ogImage, Astro.site).toString();
 
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
 import '../styles/tokens.css';
 ---
 <!doctype html>
@@ -28,13 +30,6 @@ import '../styles/tokens.css';
     <link rel="canonical" href={canonicalURL} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
