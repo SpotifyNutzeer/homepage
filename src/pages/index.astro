@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
 ---
 <Layout>
-  <main style="max-width: 1180px; margin: 0 auto; padding: 4rem 1.5rem;">
+  <Nav />
+  <main id="top" style="max-width: 1180px; margin: 0 auto; padding: 4rem 1.5rem; min-height: 200vh;">
     <h1 style="font-size: 3rem;">Hello, paul.wtf</h1>
-    <p style="color: var(--text-muted);">Liquid-glass scaffold läuft.</p>
+    <p style="color: var(--text-muted);">Scroll, um den Nav-Background zu prüfen.</p>
   </main>
 </Layout>

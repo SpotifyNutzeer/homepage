@@ -1,0 +1,87 @@
+---
+const links = [
+  { href: '#about',     label: 'Über mich' },
+  { href: '#projects',  label: 'Projekte' },
+  { href: '#tools',     label: 'Tools' },
+  { href: '#hardware',  label: 'Hardware' },
+  { href: '#sidefacts', label: 'Sidefacts' },
+  { href: '#contact',   label: 'Kontakt' }
+];
+---
+<nav id="top-nav" aria-label="Hauptnavigation">
+  <a class="brand" href="#top">paul.wtf</a>
+  <ul>
+    {links.map(({ href, label }) => (
+      <li><a href={href}>{label}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem clamp(1rem, 4vw, 2rem);
+    background: rgba(11, 8, 20, 0);
+    border-bottom: 1px solid transparent;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    transition:
+      background var(--dur) var(--ease-out),
+      border-color var(--dur) var(--ease-out),
+      backdrop-filter var(--dur) var(--ease-out);
+  }
+  nav.scrolled {
+    background: rgba(11, 8, 20, 0.55);
+    border-bottom-color: var(--glass-border);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(0.6rem, 2vw, 1.4rem);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    padding: 0.25rem 0.4rem;
+    border-radius: var(--r-xs);
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  ul a:hover { color: var(--text); }
+  @media (max-width: 640px) {
+    ul a { font-size: 0.82rem; }
+    .brand { display: none; }
+    nav { justify-content: center; }
+  }
+</style>
+
+<script>
+  const nav = document.getElementById('top-nav');
+  if (nav) {
+    const onScroll = () => {
+      if (window.scrollY > 12) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>
