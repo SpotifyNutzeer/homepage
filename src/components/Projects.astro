@@ -6,7 +6,7 @@ import linkhopPreview from '../assets/linkhop-preview.webp';
 const featured = projects.find((p) => p.featured);
 const others = projects.filter((p) => !p.featured);
 ---
-<section id="projects" class="projects section-shell">
+<section id="projects" class="projects section-shell" data-reveal>
   <h2 class="section-title">Projekte</h2>
 
   {featured && <ProjectCard project={featured} preview={linkhopPreview} />}
