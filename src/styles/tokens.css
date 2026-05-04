@@ -1,7 +1,7 @@
 :root {
   /* Atmospheric blobs */
-  --blob-a: 255, 107, 157;
-  --blob-b: 192, 132, 252;
+  --blob-a: 168, 220, 255;
+  --blob-b: 103, 232, 249;
   --blob-c: 94, 234, 212;
 
   /* Shape / radii */
@@ -45,9 +45,9 @@
   --text-muted: rgba(255, 255, 255, 0.62);
   --text-dim: rgba(255, 255, 255, 0.42);
 
-  --accent: #ffb3cf;
-  --accent-contrast: #3a0a24;
-  --accent-soft: rgba(255, 179, 207, 0.18);
+  --accent: #88d8ff;
+  --accent-contrast: #042f3a;
+  --accent-soft: rgba(136, 216, 255, 0.18);
 
   --success: #86efac;
   --warning: #fde68a;
