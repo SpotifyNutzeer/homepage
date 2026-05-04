@@ -35,13 +35,13 @@ const svg = `
     Paul <tspan font-style="italic" fill="#ffb3cf">Reitmayer</tspan>
   </text>
   <text x="82" y="400"
-        font-family="-apple-system, system-ui, sans-serif"
+        font-family="sans-serif"
         font-size="32"
         fill="rgba(255,255,255,0.62)">
     Elektrotechniker · Software-Engineering als Hobby
   </text>
   <text x="82" y="560"
-        font-family="ui-monospace, Menlo, monospace"
+        font-family="monospace"
         font-size="22"
         fill="rgba(255,255,255,0.42)">
     paul.wtf

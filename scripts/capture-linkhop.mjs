@@ -8,8 +8,9 @@ const out = resolve(__dirname, '..', 'src', 'assets', 'linkhop-preview.webp');
 
 const URL = 'https://linkhop.paul.wtf';
 
-const browser = await chromium.launch();
+let browser;
 try {
+  browser = await chromium.launch();
   const context = await browser.newContext({
     viewport: { width: 1280, height: 720 },
     deviceScaleFactor: 2,
@@ -22,5 +23,5 @@ try {
   await sharp(png).webp({ quality: 82 }).toFile(out);
   console.log('Wrote', out);
 } finally {
-  await browser.close();
+  await browser?.close();
 }
