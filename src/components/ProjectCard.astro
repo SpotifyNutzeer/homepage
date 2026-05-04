@@ -11,7 +11,7 @@ interface Props {
 const { project, preview } = Astro.props;
 const isLive = !!project.liveUrl;
 ---
-<a class={`pcard glass ${project.featured ? 'featured' : ''}`} href={project.liveUrl ?? project.repoUrl}>
+<a class={`pcard glass ${project.featured ? 'featured' : ''}`} href={project.liveUrl ?? project.repoUrl} target="_blank" rel="noopener noreferrer">
   {preview && (
     <div class="visual">
       <Image
@@ -19,7 +19,7 @@ const isLive = !!project.liveUrl;
         alt={`Vorschau von ${project.name}`}
         widths={[640, 960, 1280]}
         sizes="(min-width: 1024px) 1024px, 100vw"
-        loading="lazy"
+        loading={project.featured ? 'eager' : 'lazy'}
         decoding="async"
       />
     </div>
