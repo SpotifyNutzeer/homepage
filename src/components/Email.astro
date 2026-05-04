@@ -7,23 +7,48 @@ const { user, domain } = Astro.props;
 ---
 <button
   type="button"
-  class="email-btn"
+  class="glass tile email"
   data-user={user}
   data-domain={domain}
   aria-label="Email-Adresse anzeigen und in Mail-Client öffnen"
 >
-  <span data-email-text>(Email anzeigen)</span>
+  <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+    <path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9.5L2.5 6.7v.05L12 13.5l9.5-6.75V6.7L12 13.5Z"/>
+  </svg>
+  <div>
+    <span class="label">Email</span>
+    <span class="value" data-email-text>(Email anzeigen)</span>
+  </div>
 </button>
 
 <style>
-  .email-btn {
-    background: none; border: none; padding: 0; margin: 0;
-    color: inherit; font: inherit; text-align: left; cursor: pointer;
+  .tile {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 1rem 1.15rem;
+    text-decoration: none; color: inherit;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    border-radius: var(--r-lg);
+    cursor: pointer; text-align: left;
+    transition: transform var(--dur) var(--ease-out);
+    font: inherit;
+    width: 100%;
+  }
+  .tile:hover { transform: translateY(-2px); }
+  .tile svg { flex-shrink: 0; color: var(--text-muted); }
+  .label {
+    display: block; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim);
+  }
+  .value {
+    display: block; color: var(--text); font-size: 0.92rem;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
 </style>
 
 <script>
-  document.querySelectorAll<HTMLButtonElement>('.email-btn').forEach((btn) => {
+  document.querySelectorAll<HTMLButtonElement>('.tile.email').forEach((btn) => {
     const user = btn.dataset.user;
     const domain = btn.dataset.domain;
     if (!user || !domain) return;
