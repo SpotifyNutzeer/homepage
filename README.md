@@ -36,7 +36,7 @@ node scripts/generate-og.mjs            # writes public/og-image.png
 
 ```bash
 docker build -t homepage:dev .
-docker run --rm -p 8080:80 homepage:dev
+docker run --rm -p 8080:8080 homepage:dev
 ```
 
 ## Release
