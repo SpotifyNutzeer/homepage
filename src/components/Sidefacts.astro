@@ -1,0 +1,156 @@
+---
+import { Image } from 'astro:assets';
+import { bmw, pax, cats } from '../data/sidefacts';
+---
+<section id="sidefacts" class="sidefacts">
+  <h2 class="section-title">Wenn ich nicht vor dem Bildschirm sitze</h2>
+
+  <div class="row-large">
+    <article class="glass card car">
+      <Image src={bmw.image} alt="BMW i4 eDrive35" widths={[480, 720, 960]} sizes="(min-width: 720px) 480px, 100vw" />
+      <div class="text">
+        <h3>BMW i4 eDrive35</h3>
+        <p>{bmw.text}</p>
+      </div>
+    </article>
+
+    <article class="glass card pax">
+      <div class="pax-text">
+        <h3>Pax</h3>
+        <p class="meta">{pax.species} · {pax.pronouns} · {pax.age}</p>
+        <p class="bio">„{pax.description}"</p>
+        <div class="taglist">
+          <span class="tag-label">Likes</span>
+          <ul class="tags">
+            {pax.likes.map((l) => <li>{l}</li>)}
+          </ul>
+        </div>
+        <div class="taglist">
+          <span class="tag-label">Dislikes</span>
+          <ul class="tags dislikes">
+            {pax.dislikes.map((l) => <li>{l}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div class="pax-photo">
+        <Image src={pax.image} alt="Fursona Pax (Arctic Fox)" widths={[300, 545]} sizes="(min-width: 720px) 220px, 50vw" />
+      </div>
+    </article>
+  </div>
+
+  <div class="row-cats">
+    {cats.map((c) => (
+      <article class="glass card cat">
+        <Image src={c.image} alt={`Katze ${c.name}`} widths={[300, 480, 720]} sizes="(min-width: 720px) 240px, 50vw" />
+        <div class="cat-body">
+          <h4>{c.name}</h4>
+          <p>{c.personality}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .sidefacts {
+    max-width: 1180px; margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .row-large {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  }
+  .card { overflow: hidden; padding: 0; }
+
+  .car { display: flex; flex-direction: column; }
+  .car :global(img) {
+    width: 100%; aspect-ratio: 16 / 10;
+    object-fit: cover; display: block;
+  }
+  .car .text { padding: 1.25rem 1.5rem 1.5rem; }
+  .car h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .car p { margin: 0; color: var(--text-muted); line-height: 1.55; }
+
+  .pax {
+    display: grid; grid-template-columns: 1fr 220px;
+    gap: 1rem; padding: 1.5rem;
+  }
+  .pax-text h3 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .pax-text .meta {
+    color: var(--text-dim); font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 0.85rem;
+  }
+  .pax-text .bio {
+    color: var(--text-muted); font-style: italic;
+    line-height: 1.55; margin: 0 0 1rem;
+  }
+  .taglist { margin-bottom: 0.6rem; }
+  .taglist:last-child { margin-bottom: 0; }
+  .tag-label {
+    display: block; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); margin-bottom: 0.3rem;
+  }
+  .tags {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+  }
+  .tags li {
+    font-size: 0.74rem; padding: 0.18rem 0.55rem;
+    border-radius: var(--r-pill);
+    background: rgba(94, 234, 212, 0.10);
+    color: rgba(94, 234, 212, 0.9);
+    border: 1px solid rgba(94, 234, 212, 0.18);
+  }
+  .tags.dislikes li {
+    background: rgba(252, 165, 165, 0.10);
+    color: rgba(252, 165, 165, 0.9);
+    border-color: rgba(252, 165, 165, 0.18);
+  }
+
+  .pax-photo {
+    border-radius: var(--r-md); overflow: hidden;
+    background: linear-gradient(135deg, #2a1830, #1a0e22);
+    border: 1px solid var(--glass-border);
+    align-self: stretch;
+  }
+  .pax-photo :global(img) {
+    width: 100%; height: 100%;
+    object-fit: contain; object-position: center;
+    display: block;
+  }
+
+  .row-cats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+  }
+  .cat :global(img) {
+    width: 100%; aspect-ratio: 4 / 3;
+    object-fit: cover; display: block;
+  }
+  .cat-body { padding: 0.85rem 1rem 1rem; }
+  .cat-body h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem; margin: 0 0 0.25rem;
+  }
+  .cat-body p {
+    margin: 0; color: var(--text-muted);
+    font-size: 0.85rem; line-height: 1.45;
+  }
+
+  @media (max-width: 880px) {
+    .row-large { grid-template-columns: 1fr; }
+    .row-cats  { grid-template-columns: 1fr 1fr; }
+    .pax       { grid-template-columns: 1fr 160px; padding: 1.25rem; }
+  }
+  @media (max-width: 480px) {
+    .pax { grid-template-columns: 1fr; }
+    .pax-photo { max-width: 220px; justify-self: center; }
+    .row-cats { grid-template-columns: 1fr; }
+  }
+</style>
