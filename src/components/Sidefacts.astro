@@ -7,7 +7,9 @@ import { bmw, pax, cats } from '../data/sidefacts';
 
   <div class="row-large">
     <article class="glass card car">
-      <Image src={bmw.image} alt="BMW i4 eDrive35" widths={[480, 720, 960]} sizes="(min-width: 720px) 480px, 100vw" />
+      <div class="visual">
+        <Image src={bmw.image} alt="BMW i4 eDrive35" widths={[480, 720, 960]} sizes="(min-width: 720px) 480px, 100vw" />
+      </div>
       <div class="text">
         <h3>BMW i4 eDrive35</h3>
         <p>{bmw.text}</p>
@@ -41,7 +43,9 @@ import { bmw, pax, cats } from '../data/sidefacts';
   <div class="row-cats">
     {cats.map((c) => (
       <article class="glass card cat">
-        <Image src={c.image} alt={`Katze ${c.name}`} widths={[300, 480, 720]} sizes="(min-width: 720px) 240px, 50vw" />
+        <div class="visual">
+          <Image src={c.image} alt={`Katze ${c.name}`} widths={[300, 480, 720]} sizes="(min-width: 720px) 240px, 50vw" />
+        </div>
         <div class="cat-body">
           <h4>{c.name}</h4>
           <p>{c.personality}</p>
@@ -65,11 +69,16 @@ import { bmw, pax, cats } from '../data/sidefacts';
   .row-large {
     display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
   }
+  .row-large > * { min-width: 0; }
   .card { overflow: hidden; padding: 0; }
 
   .car { display: flex; flex-direction: column; }
-  .car :global(img) {
+  .car .visual {
     width: 100%; aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .car .visual :global(img) {
+    width: 100%; height: 100%;
     object-fit: cover; display: block;
   }
   .car .text { padding: 1.25rem 1.5rem 1.5rem; }
@@ -80,6 +89,7 @@ import { bmw, pax, cats } from '../data/sidefacts';
     display: grid; grid-template-columns: 1fr 220px;
     gap: 1rem; padding: 1.5rem;
   }
+  .pax > * { min-width: 0; }
   .pax-text h3 { font-size: 1.4rem; margin-bottom: 0.25rem; }
   .pax-text .meta {
     color: var(--text-dim); font-size: 0.78rem;
@@ -129,8 +139,13 @@ import { bmw, pax, cats } from '../data/sidefacts';
   .row-cats {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
   }
-  .cat :global(img) {
+  .row-cats > * { min-width: 0; }
+  .cat .visual {
     width: 100%; aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .cat .visual :global(img) {
+    width: 100%; height: 100%;
     object-fit: cover; display: block;
   }
   .cat-body { padding: 0.85rem 1rem 1rem; }
