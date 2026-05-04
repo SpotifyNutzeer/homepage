@@ -16,6 +16,7 @@ RUN pnpm build
 FROM nginxinc/nginx-unprivileged:alpine-slim
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx-security.inc /etc/nginx/conf.d/security.inc
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 8080
