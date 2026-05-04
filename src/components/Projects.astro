@@ -6,7 +6,7 @@ import linkhopPreview from '../assets/linkhop-preview.webp';
 const featured = projects.find((p) => p.featured);
 const others = projects.filter((p) => !p.featured);
 ---
-<section id="projects" class="projects">
+<section id="projects" class="projects section-shell">
   <h2 class="section-title">Projekte</h2>
 
   {featured && <ProjectCard project={featured} preview={linkhopPreview} />}
@@ -18,15 +18,11 @@ const others = projects.filter((p) => !p.featured);
 
 <style>
   .projects {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
   }
   .section-title {
-    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
     margin-bottom: 0.5rem;
   }
   .grid {
