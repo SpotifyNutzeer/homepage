@@ -20,16 +20,16 @@ import { bmw, pax, cats } from '../data/sidefacts';
       <div class="pax-text">
         <h3>Pax</h3>
         <p class="meta">{pax.species} · {pax.pronouns} · {pax.age}</p>
-        <p class="bio">„{pax.description}“</p>
+        <p class="bio" lang="en">„{pax.description}“</p>
         <div class="taglist">
           <span class="tag-label">Likes</span>
-          <ul class="tags">
+          <ul class="tags" lang="en">
             {pax.likes.map((l) => <li>{l}</li>)}
           </ul>
         </div>
         <div class="taglist">
           <span class="tag-label">Dislikes</span>
-          <ul class="tags dislikes">
+          <ul class="tags dislikes" lang="en">
             {pax.dislikes.map((l) => <li>{l}</li>)}
           </ul>
         </div>
