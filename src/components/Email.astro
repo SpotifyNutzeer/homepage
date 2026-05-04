@@ -1,0 +1,37 @@
+---
+interface Props {
+  user: string;
+  domain: string;
+}
+const { user, domain } = Astro.props;
+---
+<button
+  type="button"
+  class="email-btn"
+  data-user={user}
+  data-domain={domain}
+  aria-label="Email-Adresse anzeigen und in Mail-Client öffnen"
+>
+  <span data-email-text>(Email anzeigen)</span>
+</button>
+
+<style>
+  .email-btn {
+    background: none; border: none; padding: 0; margin: 0;
+    color: inherit; font: inherit; text-align: left; cursor: pointer;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.email-btn').forEach((btn) => {
+    const user = btn.dataset.user;
+    const domain = btn.dataset.domain;
+    if (!user || !domain) return;
+    const email = `${user}@${domain}`;
+    const span = btn.querySelector<HTMLElement>('[data-email-text]');
+    if (span) span.textContent = email;
+    btn.addEventListener('click', () => {
+      window.location.href = `mailto:${email}`;
+    });
+  });
+</script>
