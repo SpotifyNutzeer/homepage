@@ -8,6 +8,5 @@ spec:
   issuerRef:
     name: lets-encrypt
     kind: ClusterIssuer
-  commonName: paul.wtf
   dnsNames:
     - paul.wtf
