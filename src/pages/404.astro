@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="404 — paul.wtf" description="Diese Seite existiert nicht.">
+  <main style="max-width: 600px; margin: 0 auto; padding: clamp(4rem, 12vw, 8rem) 1.5rem; text-align: center;">
+    <h1 style="font-size: clamp(3rem, 8vw, 5rem);">
+      <em style="color: var(--accent); font-style: italic;">404</em>
+    </h1>
+    <p style="color: var(--text-muted); margin: 1rem 0 2rem;">
+      Hier ist nichts. Vermutlich ein Tippfehler in der URL.
+    </p>
+    <a href="/" style="
+      display: inline-block;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--r-pill);
+      background: var(--accent);
+      color: var(--accent-contrast);
+      text-decoration: none;
+      font-weight: 500;
+    ">Zur Startseite →</a>
+  </main>
+</Layout>
