@@ -14,26 +14,25 @@ export interface Cat {
 
 export const bmw = {
   image: bmwImg,
-  text: 'Mein erstes E-Auto. Ich bin sehr positiv überrascht, wie sehr sich der Wechsel anfühlt.'
+  text: 'Mein erstes E-Auto. Ich war skeptisch, aber das Fahrgefühl hat mich überzeugt — und Laden, Reichweite und Routenplanung sind für mich überraschend unkompliziert.'
 };
 
 export const pax = {
   image: paxImg,
-  species: 'Arctic Fox',
-  pronouns: 'he/him',
+  species: 'Polarfuchs',
+  pronouns: 'er/ihn',
   age: 22,
   description:
-    'Playful, curious, a bit of a gremlin. Chaotic energy with a techy, clever streak underneath.',
+    'Verspielt, neugierig, ein kleiner Gremlin. Chaotische Energie mit einer technikaffinen, cleveren Seite darunter.',
   likes: [
-    'Tinkering with tech',
-    'cold weather',
-    'snacks',
-    'poking at things that say "do not touch"'
+    'An Technik herumbasteln',
+    'kaltes Wetter',
+    'Snacks',
+    'an Dingen herumstochern, auf denen „nicht berühren“ steht'
   ],
   dislikes: [
-    'Proprietary software',
-    'slow Wi-Fi',
-    'people who say "it works on my machine"'
+    'Proprietäre Software',
+    'langsames WLAN'
   ]
 };
 
