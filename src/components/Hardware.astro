@@ -1,0 +1,75 @@
+---
+import { workstation, laptop, server } from '../data/hardware';
+---
+<section id="hardware" class="hardware">
+  <h2 class="section-title">Hardware</h2>
+
+  <div class="grid">
+    <article class="glass card workstation">
+      <h3 class="card-title">Workstation</h3>
+      {workstation.map((cat) => (
+        <div class="cat">
+          <span class="cat-label">{cat.label}</span>
+          <ul>
+            {cat.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </article>
+
+    <div class="side">
+      <article class="glass card compact">
+        <h3 class="card-title">Laptop</h3>
+        <p>{laptop}</p>
+      </article>
+
+      <article class="glass card compact">
+        <h3 class="card-title">Server</h3>
+        <p class="muted">{server.hostingNote}</p>
+        <ul class="server-list">
+          {server.lines.map((line) => <li>{line}</li>)}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hardware {
+    max-width: 1180px; margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: 1.5rem;
+  }
+  .grid {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 1.25rem; align-items: start;
+  }
+  .side { display: flex; flex-direction: column; gap: 1.25rem; }
+  .card { padding: 1.5rem; }
+  .card-title { font-size: 1.4rem; margin-bottom: 1rem; }
+  .cat { margin-bottom: 1rem; }
+  .cat:last-child { margin-bottom: 0; }
+  .cat-label {
+    display: inline-block; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); margin-bottom: 0.4rem;
+  }
+  .cat ul, .server-list {
+    list-style: none; margin: 0; padding: 0;
+    color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;
+  }
+  .cat li, .server-list li { padding: 0.05rem 0; }
+  .compact p {
+    margin: 0; color: var(--text-muted);
+    font-size: 0.92rem; line-height: 1.55;
+  }
+  .compact .muted {
+    font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim);
+    margin-bottom: 0.75rem;
+  }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+</style>
