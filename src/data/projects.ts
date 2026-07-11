@@ -28,6 +28,24 @@ export const projects: Project[] = [
     featured: true
   },
   {
+    name: 'tidalwave',
+    description:
+      'Self-hosted Hörstatistik für Tidal. Da Tidal keine History-API bietet, läuft tidalwave über Last.fm: pollt user.getRecentTracks und aggregiert Top-Artists/Tracks/Alben, Listening-Clock und Scrobble-Verlauf in Postgres. Multi-User von Tag eins, mit optionalen Read-only-Share-Links.',
+    stack: [
+      'SvelteKit',
+      'TypeScript',
+      'FastAPI',
+      'Python',
+      'Postgres',
+      'Helm',
+      'FluxCD',
+      'RKE2'
+    ],
+    repoUrl: 'https://github.com/SpotifyNutzeer/tidalwave',
+    liveUrl: 'https://tidalwave.paul.wtf',
+    featured: true
+  },
+  {
     name: 'luna-plugins',
     description:
       'Custom-Plugins für Tidal Luna. „Link Copy“ für Spotify- und YouTube-Links direkt aus dem Tidal-Kontextmenü.',
@@ -40,5 +58,19 @@ export const projects: Project[] = [
       'StreamController-Plugin für Tidal-Wiedergabesteuerung über die TidaLuna WebSocket-API. Play/Pause, Skip, Volume, Now-Playing.',
     stack: ['Python', 'WebSockets', 'StreamController API'],
     repoUrl: 'https://github.com/SpotifyNutzeer/streamcontroller-tidal'
+  },
+  {
+    name: 'rodecaster-tidal-bridge',
+    description:
+      'Brücke vom RodeCaster-USB-MIDI-Fader zur Tidal-Lautstärke, über das @vmohammad/api-TidaLuna-Plugin. Fader anlernen, als systemd-User-Service laufen lassen — der Hardware-Regler steuert die Wiedergabe.',
+    stack: ['Python', 'ALSA MIDI', 'TidaLuna API', 'systemd'],
+    repoUrl: 'https://github.com/SpotifyNutzeer/rodecaster-tidal-bridge'
+  },
+  {
+    name: 'System-Setup',
+    description:
+      'Mein Desktop als Code: deklarative NixOS-Konfiguration (Flakes, modular nach Hosts & Home-Manager) plus Dotfiles — Hyprland, Quickshell-Bar/Shell (QML), fish, kitty.',
+    stack: ['Nix', 'NixOS', 'Flakes', 'Hyprland', 'Quickshell', 'fish'],
+    repoUrl: 'https://github.com/SpotifyNutzeer/nixos'
   }
 ];
