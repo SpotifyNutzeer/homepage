@@ -4,7 +4,7 @@ export interface Tool {
 }
 
 export const tools: Tool[] = [
-  { label: 'OS',        value: 'Arch Linux' },
+  { label: 'OS',        value: 'NixOS' },
   { label: 'WM',        value: 'Hyprland' },
   { label: 'Bar/Shell', value: 'Quickshell' },
   { label: 'Shell',     value: 'fish' },
