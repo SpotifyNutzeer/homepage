@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "capture-linkhop": "node scripts/capture-linkhop.mjs"
+    "capture-previews": "node scripts/capture-previews.mjs",
+    "capture-tidalwave-demo": "node scripts/capture-tidalwave-demo.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

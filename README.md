@@ -19,11 +19,23 @@ pnpm build        # outputs dist/
 pnpm preview      # serves dist/ locally
 ```
 
-### Regenerate the linkhop preview
+### Regenerate the project previews
+
+`Projects.astro` matches each preview to its featured project by filename
+(`<project.name>-preview.webp` in `src/assets/`), so a new featured project gets
+its screenshot the moment the asset exists — no code change needed.
+
+Playwright needs a Chromium-family browser. On NixOS the bundled Chromium won't
+run, so point `BROWSER_BIN` at one instead of `playwright install chromium`:
 
 ```bash
-pnpm exec playwright install chromium   # one-time
-pnpm capture-linkhop                    # writes src/assets/linkhop-preview.webp
+# linkhop — its live site is the preview
+BROWSER_BIN=$(which brave) pnpm capture-previews         # -> linkhop-preview.webp
+
+# tidalwave — its public page is a login gate, so we shoot the dashboard from a
+# locally-running frontend with a mocked stats API (see the script header):
+#   (cd ../tidalwave/frontend && pnpm install && pnpm dev --port 4319)
+TW_URL=http://localhost:4319 BROWSER_BIN=$(which brave) pnpm capture-tidalwave-demo
 ```
 
 ### Regenerate the OG image
