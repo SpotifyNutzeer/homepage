@@ -11,7 +11,7 @@ interface Props {
 const { project, preview } = Astro.props;
 const isLive = !!project.liveUrl;
 ---
-<a class={`pcard glass ${project.featured ? 'featured' : ''}`} href={project.liveUrl ?? project.repoUrl} target="_blank" rel="noopener noreferrer">
+<a class={`pcard window window--focusable ${project.featured ? 'featured' : ''}`} href={project.liveUrl ?? project.repoUrl} target="_blank" rel="noopener noreferrer">
   {preview && (
     <div class="visual">
       <Image
@@ -27,7 +27,7 @@ const isLive = !!project.liveUrl;
   <div class="head">
     <h3>{project.name}</h3>
     {isLive && (
-      <span class="live">LIVE · {project.liveUrl?.replace(/^https?:\/\//, '')}</span>
+      <span class="live">live · {project.liveUrl?.replace(/^https?:\/\//, '')}</span>
     )}
   </div>
   <p class="desc">{project.description}</p>
@@ -47,18 +47,15 @@ const isLive = !!project.liveUrl;
     padding: 1.5rem;
     text-decoration: none;
     color: inherit;
-    transition: transform var(--dur) var(--ease-out);
   }
-  .pcard:hover { transform: translateY(-3px); }
 
   .pcard.featured { padding: 2rem; gap: 1.1rem; }
 
   .visual {
-    border-radius: var(--r-md);
+    border-radius: var(--r-nest);
     overflow: hidden;
     aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #2a1830, #1a0e22);
-    border: 1px solid var(--glass-border);
+    background: var(--crust);
   }
   .visual :global(img) {
     width: 100%; height: 100%; object-fit: cover; display: block;
@@ -66,29 +63,30 @@ const isLive = !!project.liveUrl;
 
   .head {
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.4rem 1rem;
   }
   .head h3 {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
   }
-  .pcard.featured .head h3 { font-size: 2rem; }
+  .pcard.featured .head h3 { font-size: 1.6rem; }
 
+  /* Opak wie alle Zen-Flächen — Alpha-Tints sind Liquidglass-Vokabular */
   .live {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     padding: 0.2rem 0.55rem;
-    border-radius: var(--r-pill);
-    background: rgba(94, 234, 212, 0.18);
-    color: #5eead4;
-    letter-spacing: 0.05em;
+    border-radius: var(--r-chip);
+    background: var(--surface0);
+    color: var(--green);
     white-space: nowrap;
   }
 
   .desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.5;
+    color: var(--subtext0);
+    font-size: 0.88rem;
+    line-height: 1.6;
     margin: 0;
   }
 
@@ -98,22 +96,21 @@ const isLive = !!project.liveUrl;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.35rem;
     margin-top: auto;
   }
   .stack li {
     font-size: 0.72rem;
-    padding: 0.22rem 0.6rem;
-    border-radius: var(--r-pill);
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-muted);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--r-chip);
+    background: var(--surface0);
+    color: var(--subtext1);
   }
 
   .links {
     margin-top: 0.25rem;
-    color: var(--text-dim);
-    font-size: 0.78rem;
-    font-family: var(--font-mono);
+    color: var(--overlay2);
+    font-size: 0.76rem;
+    overflow-wrap: anywhere;
   }
 </style>

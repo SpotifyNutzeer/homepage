@@ -30,10 +30,11 @@ const others = projects.filter((p) => !p.featured);
 </section>
 
 <style>
+  /* Fenster-Gaps wie hyprland zen: gaps_out 16 → 1rem */
   .projects {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
   }
   .section-title {
     margin-bottom: 0.5rem;
@@ -41,8 +42,10 @@ const others = projects.filter((p) => !p.featured);
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 1rem;
   }
+  /* 1fr-Tracks dürfen unter die min-content-Breite der Repo-URLs schrumpfen */
+  .grid > :global(*) { min-width: 0; }
   @media (max-width: 720px) {
     .grid { grid-template-columns: 1fr; }
   }
