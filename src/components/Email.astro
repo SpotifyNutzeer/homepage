@@ -7,10 +7,9 @@ const { user, domain } = Astro.props;
 ---
 <button
   type="button"
-  class="glass tile email"
+  class="window window--focusable tile email"
   data-user={user}
   data-domain={domain}
-  aria-label="Email-Adresse anzeigen und in Mail-Client öffnen"
 >
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
     <path fill="currentColor" d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9.5L2.5 6.7v.05L12 13.5l9.5-6.75V6.7L12 13.5Z"/>
@@ -18,6 +17,7 @@ const { user, domain } = Astro.props;
   <div>
     <span class="label">Email</span>
     <span class="value" data-email-text>(Email anzeigen)</span>
+    <span class="sr-only">— in Mail-Client öffnen</span>
   </div>
 </button>
 
@@ -26,23 +26,22 @@ const { user, domain } = Astro.props;
     display: flex; align-items: center; gap: 0.85rem;
     padding: 1rem 1.15rem;
     text-decoration: none; color: inherit;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
-    border-radius: var(--r-lg);
+    border: 0;
     cursor: pointer; text-align: left;
-    transition: transform var(--dur) var(--ease-out);
     font: inherit;
     width: 100%;
+    min-width: 0;
   }
-  .tile:hover { transform: translateY(-2px); }
-  .tile svg { flex-shrink: 0; color: var(--text-muted); }
+  /* Ohne min-width:0 greift das text-overflow: ellipsis der .value nie */
+  .tile > div { min-width: 0; }
+  .tile svg { flex-shrink: 0; color: var(--teal); }
   .label {
-    display: block; font-size: 0.7rem;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-dim);
+    display: block; font-size: 0.72rem;
+    text-transform: lowercase;
+    color: var(--overlay2);
   }
   .value {
-    display: block; color: var(--text); font-size: 0.92rem;
+    display: block; color: var(--text); font-size: 0.88rem;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
 </style>

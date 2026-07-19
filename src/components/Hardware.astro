@@ -5,8 +5,8 @@ import { workstation, laptop, server } from '../data/hardware';
   <h2 class="section-title">Hardware</h2>
 
   <div class="grid">
-    <article class="glass card workstation">
-      <h3 class="card-title">Workstation</h3>
+    <article class="window card workstation">
+      <h3 class="card-title">workstation</h3>
       {workstation.map((cat) => (
         <div class="cat">
           <span class="cat-label">{cat.label}</span>
@@ -18,13 +18,13 @@ import { workstation, laptop, server } from '../data/hardware';
     </article>
 
     <div class="side">
-      <article class="glass card compact">
-        <h3 class="card-title">Laptop</h3>
+      <article class="window card compact">
+        <h3 class="card-title">laptop</h3>
         <p>{laptop}</p>
       </article>
 
-      <article class="glass card compact">
-        <h3 class="card-title">Server</h3>
+      <article class="window card compact">
+        <h3 class="card-title">server</h3>
         <p class="muted">{server.hostingNote}</p>
         <ul class="server-list">
           {server.lines.map((line) => <li>{line}</li>)}
@@ -40,30 +40,31 @@ import { workstation, laptop, server } from '../data/hardware';
   }
   .grid {
     display: grid; grid-template-columns: 1.4fr 1fr;
-    gap: 1.25rem; align-items: start;
+    gap: 1rem; align-items: start;
   }
-  .side { display: flex; flex-direction: column; gap: 1.25rem; }
+  .side { display: flex; flex-direction: column; gap: 1rem; }
   .card { padding: 1.5rem; }
-  .card-title { font-size: 1.4rem; margin-bottom: 1rem; }
+  .card-title { font-size: 1.1rem; margin-bottom: 1rem; }
   .cat { margin-bottom: 1rem; }
   .cat:last-child { margin-bottom: 0; }
   .cat-label {
-    display: inline-block; font-size: 0.7rem;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-dim); margin-bottom: 0.4rem;
+    display: inline-block; font-size: 0.8rem;
+    text-transform: lowercase;
+    color: var(--teal); margin-bottom: 0.35rem;
   }
   .cat ul, .server-list {
     list-style: none; margin: 0; padding: 0;
-    color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;
+    color: var(--subtext0); font-size: 0.85rem; line-height: 1.6;
   }
   .cat li, .server-list li { padding: 0.05rem 0; }
   .compact p {
-    margin: 0; color: var(--text-muted);
-    font-size: 0.92rem; line-height: 1.55;
+    margin: 0; color: var(--subtext0);
+    font-size: 0.85rem; line-height: 1.6;
   }
   .compact .muted {
-    font-size: 0.75rem; text-transform: uppercase;
-    letter-spacing: 0.08em; color: var(--text-dim);
+    font-size: 0.75rem;
+    text-transform: lowercase;
+    color: var(--overlay2);
     margin-bottom: 0.75rem;
   }
   @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
