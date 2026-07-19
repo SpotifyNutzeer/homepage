@@ -34,7 +34,7 @@ export const workstation: HardwareCategory[] = [
     items: [
       'Punch Audio Martilo',
       'Kiwi Ears x B_Media: Chorus',
-      'FiiO KA17'
+      'FiiO KA17',
       'Fosi Audio ZH3',
       'Rodecaster Duo 2',
       'Shure SM7B'
