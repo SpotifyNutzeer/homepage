@@ -32,7 +32,9 @@ export const workstation: HardwareCategory[] = [
   {
     label: 'Audio',
     items: [
-      'Fiio FT1 (32 Ω)',
+      'Punch Audio Martilo',
+      'Kiwi Ears x B_Media: Chorus',
+      'FiiO KA17'
       'Fosi Audio ZH3',
       'Rodecaster Duo 2',
       'Shure SM7B'
